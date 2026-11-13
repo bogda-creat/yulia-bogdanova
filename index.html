@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#19191a">
+  <meta name="description" content="Юлия Богданова — ведущая мероприятий. Тёплая атмосфера, продуманный сценарий и внимание к каждому гостю. Узнайте о форматах и обсудите дату вашего события.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Юлия Богданова — ведущая мероприятий">
+  <meta property="og:description" content="Мероприятия, которые хочется вспоминать.">
+  <title>Юлия Богданова — ведущая мероприятий</title>
+  <style>
+    :root{--ink:#1c1b1b;--muted:#686562;--paper:#f6f3ee;--warm:#ebe4da;--card:#fffdfa;--accent:#be8568;--accent-hover:#a46c53;--line:#ded8d0;--serif:Georgia,"Times New Roman",serif;--sans:Inter,"Segoe UI",Arial,sans-serif;--radius:16px}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:92px}
+    body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+    ::selection{background:var(--accent);color:white}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    img{max-width:100%;display:block}
+    .container{width:min(1200px,calc(100% - 72px));margin-inline:auto}
+    .eyebrow{display:flex;align-items:center;gap:13px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:var(--accent)}
+    .eyebrow:before{content:"";width:28px;height:1px;background:currentColor;flex:none}
+    .eyebrow--light{color:#e5c2a9}
+    .section{padding:118px 0}
+    .section-header{display:flex;justify-content:space-between;gap:36px;align-items:end;margin-bottom:52px}
+    h1,h2,h3,p{margin-top:0}
+    h2{font-weight:400;font-family:var(--serif);font-size:clamp(42px,5vw,72px);line-height:1.08;letter-spacing:-.043em;margin:17px 0 0}
+    h2 em,.emphasis{font-weight:400;font-style:italic;color:var(--accent)}
+    .section-intro{max-width:370px;color:var(--muted);line-height:1.85;margin:0 0 4px}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:14px;border-radius:2px;padding:15px 22px;text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:.135em;min-height:50px;border:1px solid transparent;transition:background .2s ease,transform .2s ease,color .2s ease,border .2s ease;white-space:nowrap}
+    .btn:hover{transform:translateY(-2px)}
+    .btn svg{width:16px;height:16px;stroke:currentColor;stroke-width:1.8;fill:none}
+    .btn-primary{background:var(--accent);color:white}
+    .btn-primary:hover{background:var(--accent-hover)}
+    .btn-outline-white{border-color:rgba(255,255,255,.65);color:white;background:transparent}
+    .btn-outline-white:hover{background:rgba(255,255,255,.12)}
+    .btn-outline-dark{border-color:#a9a099;background:transparent;color:var(--ink)}
+    .btn-outline-dark:hover{background:var(--ink);color:white}
+    .skip-link{position:fixed;top:-100px;left:12px;z-index:999;background:white;padding:12px}
+    .skip-link:focus{top:12px}
+    /* NAVIGATION */
+    .site-header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .25s ease,box-shadow .25s ease;background:linear-gradient(180deg,rgba(10,10,11,.62),rgba(10,10,11,0))}
+    .site-header.scrolled,.site-header.menu-open{background:rgba(22,21,21,.94);box-shadow:0 5px 25px rgba(0,0,0,.15);backdrop-filter:blur(18px)}
+    .nav{display:flex;justify-content:space-between;align-items:center;min-height:82px;gap:22px}
+    .brand{display:flex;align-items:center;gap:14px;color:#fff;flex:none}
+    .brand-mark{border:1px solid rgba(255,255,255,.65);width:42px;height:42px;display:grid;place-items:center;font:italic 22px var(--serif);letter-spacing:-3px;padding-right:4px}
+    .brand-title{font-size:12px;letter-spacing:.17em;text-transform:uppercase;font-weight:700;line-height:1.4}
+    .brand-title small{font-size:10px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;display:block;color:#ddd1c8;margin-top:2px}
+    .nav-links{display:flex;gap:25px;align-items:center}
+    .nav-links a{font-size:11px;color:#fff;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+    .nav-links a:hover{color:#ebbaa1}
+    .nav-cta{border:1px solid rgba(255,255,255,.6);padding:11px 15px}
+    .menu-button{display:none;border:1px solid rgba(255,255,255,.4);background:none;color:white;width:43px;height:43px;align-items:center;justify-content:center}
+    .menu-button svg{width:23px;height:23px;stroke:currentColor;stroke-width:1.8}
+    /* HERO */
+    .hero{position:relative;min-height:min(900px,100svh);min-height:100svh;background:#292523;display:flex;align-items:center;color:#fff;isolation:isolate;overflow:hidden}
+    .hero-image{position:absolute;z-index:-3;inset:0;background-image:url('assets/hero.webp');background-size:cover;background-position:center 44%;transform:scale(1.015)}
+    .hero:after{content:"";position:absolute;z-index:-2;inset:0;background:linear-gradient(90deg,rgba(15,14,16,.86) 0%,rgba(18,16,17,.7) 29%,rgba(14,13,14,.27) 58%,rgba(11,11,12,.02) 92%),linear-gradient(0deg,rgba(10,10,10,.46),transparent 28%)}
+    .hero-content{padding-top:115px;padding-bottom:100px;position:relative;z-index:1}
+    .hero .eyebrow{margin-bottom:24px}
+    .hero h1{font-family:var(--serif);font-size:clamp(72px,8.4vw,132px);font-weight:400;line-height:.92;letter-spacing:-.061em;margin:0 0 29px;max-width:920px}
+    .hero h1 em{font-weight:400;display:block;color:#e6baa1;font-style:italic;margin-left:clamp(0px,4vw,50px)}
+    .hero-description{font-size:clamp(16px,1.55vw,20px);color:#eee6e0;line-height:1.8;max-width:495px;margin-bottom:34px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-bottom{position:absolute;left:0;right:0;bottom:29px;z-index:1}
+    .hero-bottom .container{display:flex;align-items:center;justify-content:space-between;color:rgba(255,255,255,.72);font-size:11px;letter-spacing:.15em;text-transform:uppercase}
+    .scroll-cue{display:flex;align-items:center;gap:13px}
+    .scroll-cue .line{height:1px;width:65px;background:rgba(255,255,255,.65)}
+    /* ABOUT */
+    .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(42px,7vw,115px);align-items:center}
+    .about-visual{position:relative;padding:0 78px 75px 0}
+    .about-photo{width:100%;height:620px;object-fit:cover;object-position:top;background:var(--warm)}
+    .about-photo-small{position:absolute;bottom:0;right:0;width:43%;height:285px;object-fit:cover;object-position:top;border:10px solid var(--paper);filter:saturate(.85)}
+    .about-corner{position:absolute;top:16px;right:11px;font:italic 82px/1 var(--serif);color:var(--accent);opacity:.65}
+    .about-copy h2{margin-bottom:28px}
+    .about-copy p{color:#595550;font-size:16px;line-height:1.95;margin-bottom:20px}
+    .about-copy .lead{font-size:19px;color:var(--ink)}
+    .signature{font:italic 32px/1.1 var(--serif);color:var(--accent);margin-top:33px}
+    /* SERVICES */
+    .services{background:var(--warm)}
+    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .service-card{background:var(--card);padding:34px 28px 36px;min-height:320px;position:relative;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+    .service-card:hover{transform:translateY(-6px);box-shadow:0 18px 35px rgba(37,29,20,.07)}
+    .service-num{font:italic 38px var(--serif);color:#c7b4a7;margin-bottom:auto}
+    .service-icon{margin:16px 0 22px;color:var(--accent);width:35px;height:35px;stroke:currentColor;stroke-width:1.25;fill:none}
+    .service-card h3{font:400 25px/1.2 var(--serif);margin:0 0 13px}
+    .service-card p{font-size:13px;color:var(--muted);line-height:1.8;margin:0}
+    /* APPROACH */
+    .approach{background:#242322;color:var(--paper);position:relative;overflow:hidden}
+    .approach:before{content:'«';font:400 520px/1 var(--serif);position:absolute;right:-40px;top:-120px;color:rgba(255,255,255,.035);pointer-events:none}
+    .approach h2{max-width:800px}
+    .approach-header{margin-bottom:70px}
+    .principles{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+    .principle{padding:0 30px;border-left:1px solid rgba(255,255,255,.2)}
+    .principle:first-child{padding-left:0;border-left:0}
+    .principle .number{font:italic 36px var(--serif);color:#d5ac95}
+    .principle h3{font:400 24px var(--serif);margin:31px 0 16px}
+    .principle p{font-size:14px;line-height:1.9;color:#c6c0bc;margin:0}
+    /* PORTFOLIO */
+    .portfolio-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 35px}
+    .portfolio-tabs button{border:1px solid #d7d0c6;color:#68605a;background:transparent;border-radius:0;padding:11px 18px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;transition:all .2s}
+    .portfolio-tabs button.active,.portfolio-tabs button:hover{color:#fff;background:var(--ink);border-color:var(--ink)}
+    .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .portfolio-item{position:relative;overflow:hidden;aspect-ratio:1/.87;background:#ddd0c1;border:0;padding:0;text-align:left;cursor:zoom-in;color:#fff}
+    .portfolio-item.tall{grid-row:span 2;aspect-ratio:auto;min-height:600px}
+    .portfolio-item img{height:100%;width:100%;object-fit:cover;transition:transform .5s;filter:saturate(.93)}
+    .portfolio-item:hover img{transform:scale(1.07)}
+    .portfolio-item:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(13,12,13,.84),rgba(13,12,13,.12) 48%,transparent 68%);pointer-events:none}
+    .portfolio-item-info{position:absolute;bottom:26px;left:25px;right:25px;z-index:1}
+    .portfolio-item-info small{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#eac3ae;font-weight:700}
+    .portfolio-item-info strong{font:400 25px/1.2 var(--serif);display:block;margin-top:7px}
+    .portfolio-item .plus{position:absolute;z-index:2;right:18px;top:18px;border:1px solid rgba(255,255,255,.8);display:grid;place-items:center;width:33px;height:33px;font-size:22px;font-weight:200}
+    .portfolio-item[hidden]{display:none!important}
+    .portfolio-caption{margin-top:23px;color:var(--muted);font-size:13px}
+    /* QUOTE */
+    .quote-section{background:#ded0c2;padding:100px 0;text-align:center}
+    .quote-section .eyebrow{justify-content:center}
+    .quote-section blockquote{font:400 clamp(27px,3.75vw,51px)/1.32 var(--serif);letter-spacing:-.025em;max-width:920px;margin:32px auto 25px}
+    .quote-section blockquote em{color:#946550}
+    .quote-section p{font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:#725d51;margin:0}
+    /* STEPS */
+    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;counter-reset:steps}
+    .step{border-top:1px solid #bcb4ad;padding:24px 8px 0 0}
+    .step span{font:italic 50px var(--serif);color:var(--accent)}
+    .step h3{font:400 26px var(--serif);margin:19px 0 11px}
+    .step p{margin:0;color:var(--muted);font-size:14px;line-height:1.9}
+    /* CONTACT */
+    .contact{background:#232222;color:#fff}
+    .contact-layout{display:grid;grid-template-columns:.86fr 1.14fr;gap:clamp(36px,7vw,110px);align-items:start}
+    .contact h2{margin:20px 0 23px}
+    .contact-copy p{color:#d5cdc8;line-height:1.9;max-width:365px}
+    .contact-micro{border-top:1px solid rgba(255,255,255,.2);padding-top:24px;margin-top:75px;font-size:12px;letter-spacing:.08em;color:#b8aaa2}
+    .contact-card{padding:38px;background:#fff;color:var(--ink)}
+    .contact-card h3{font:400 31px var(--serif);margin-bottom:20px}
+    .field{margin-bottom:17px}
+    .field label{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.13em;margin-bottom:9px}
+    .field input,.field select,.field textarea{display:block;width:100%;min-height:49px;background:#f9f6f1;border:1px solid #e4ded5;border-radius:0;padding:11px 14px;outline:none;color:var(--ink);transition:border-color .2s}
+    .field textarea{min-height:95px;resize:vertical}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+    .contact-card .btn{width:100%;margin-top:7px}
+    .form-hint{font-size:11px;line-height:1.7;color:#8b8279;margin:14px 0 0}
+    .form-message{padding:16px;border:1px solid #dbc2b3;background:#f8ede4;margin:18px 0 0;font-size:13px;color:#5d463b}
+    .form-message[hidden]{display:none}
+    .form-message textarea{width:100%;height:155px;background:white;border:1px solid #ddc9bb;padding:10px;margin-top:10px;font-size:13px;line-height:1.5;resize:vertical}
+    .form-message .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
+    .form-message .actions button,.form-message .actions a{border:1px solid #ad8067;background:white;color:#68422e;padding:8px 13px;font:700 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+    .privacy-note{font-size:11px;color:#8b8279;line-height:1.7;margin:10px 0 0}
+    /* FOOTER */
+    .footer{background:#171717;color:#eee6e0;padding:32px 0}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+    .footer-name{font:italic 25px var(--serif)}
+    .footer-copy{font-size:11px;color:#b6aaa3;letter-spacing:.08em}
+    .footer-up{font-size:11px;text-transform:uppercase;letter-spacing:.15em;border-bottom:1px solid #8f8179;padding-bottom:3px}
+    /* LIGHTBOX */
+    .lightbox{position:fixed;z-index:100;inset:0;background:rgba(9,9,9,.96);display:flex;align-items:center;justify-content:center;padding:70px 70px 85px;opacity:1}
+    .lightbox[hidden]{display:none}
+    .lightbox img{max-height:calc(100svh - 180px);max-width:min(95vw,1200px);object-fit:contain}
+    .lightbox-close,.lightbox-prev,.lightbox-next{position:absolute;background:transparent;border:1px solid rgba(255,255,255,.45);color:white;width:48px;height:48px;display:grid;place-items:center;font-size:27px;line-height:1}
+    .lightbox-close{right:20px;top:20px}
+    .lightbox-prev{left:20px;top:50%;transform:translateY(-50%)}
+    .lightbox-next{right:20px;top:50%;transform:translateY(-50%)}
+    .lightbox-text{color:#fff;position:absolute;bottom:27px;text-align:center;font:400 21px var(--serif);width:calc(100% - 90px)}
+    body.dialog-open{overflow:hidden}
+    /* Reveal only with JS enhancements (site is visible without JS) */
+    .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+    .js .reveal.is-visible{opacity:1;transform:none}
+    @media(max-width:1080px){.nav-links{gap:16px}.nav-links a{font-size:10px}.services-grid{grid-template-columns:repeat(2,1fr)}.service-card{min-height:275px}.principles{grid-template-columns:repeat(2,1fr);row-gap:38px}.principle:nth-child(3){padding-left:0;border-left:0}}
+    @media(max-width:780px){.container{width:min(100% - 36px,560px)}.section{padding:78px 0}.section-header{display:block;margin-bottom:31px}.section-intro{margin-top:18px}.menu-button{display:flex;z-index:2}.nav{min-height:70px}.nav-links{position:absolute;top:70px;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;background:#191819;padding:14px 22px 25px;border-top:1px solid rgba(255,255,255,.1)}.nav-links.show{display:flex}.nav-links a{padding:13px 0;font-size:12px}.nav-links .nav-cta{text-align:center;margin-top:11px}.hero{min-height:740px;min-height:92svh}.hero-image{background-position:64% center}.hero:after{background:linear-gradient(90deg,rgba(15,14,16,.82) 0%,rgba(15,14,16,.57) 50%,rgba(15,14,16,.19) 100%),linear-gradient(0deg,rgba(8,8,8,.44),transparent 24%)}.hero-content{padding-top:130px;padding-bottom:80px}.hero h1{font-size:clamp(63px,12vw,93px);max-width:530px}.hero h1 em{margin-left:13px}.hero-description{max-width:390px}.about-layout,.contact-layout{grid-template-columns:1fr;gap:40px}.about-visual{padding-right:48px;padding-bottom:52px}.about-photo{height:460px}.about-photo-small{height:185px}.about-corner{font-size:58px}.portfolio-grid{grid-template-columns:repeat(2,1fr)}.portfolio-item.tall{min-height:400px}.portfolio-item-info strong{font-size:21px}.steps-grid{grid-template-columns:repeat(2,1fr)}.contact-micro{margin-top:35px}.quote-section{padding:72px 0}.lightbox{padding:65px 15px 95px}.lightbox-prev{left:10px;bottom:30px;top:auto;transform:none}.lightbox-next{right:10px;bottom:30px;top:auto;transform:none}.lightbox img{max-height:calc(100svh - 160px)}}
+    @media(max-width:520px){.brand-title{font-size:10px}.brand-title small{font-size:9px}.hero h1{font-size:clamp(59px,12vw,72px)}.hero .eyebrow{letter-spacing:.15em;font-size:10px}.hero-description{font-size:15px}.hero-actions{align-items:stretch;flex-direction:column;width:fit-content}.hero-actions .btn{min-width:225px}.hero-bottom{bottom:16px}.hero-bottom .note{display:none}.services-grid,.portfolio-grid,.steps-grid{grid-template-columns:1fr}.service-card{min-height:260px}.portfolio-item,.portfolio-item.tall{height:360px;aspect-ratio:auto;min-height:0}.principles{grid-template-columns:1fr}.principle,.principle:nth-child(3){padding:0 0 0 18px;border-left:1px solid rgba(255,255,255,.2)}.principle:first-child{padding-left:18px;border-left:1px solid rgba(255,255,255,.2)}.principle h3{margin:14px 0 9px}.about-photo{height:410px}.about-photo-small{height:150px}.field-row{grid-template-columns:1fr;gap:0}.contact-card{padding:24px 20px}.portfolio-tabs button{padding:10px 12px;font-size:10px}.portfolio-tabs{gap:6px}.footer-inner{gap:10px}.quote-section blockquote{font-size:30px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.js .reveal{opacity:1;transform:none}}
+
+    /* Revision: authentic cover, real testimonials & direct contact links */
+    .hero-image{background-image:url('assets/hero-real.webp');background-position:54% 44%;}
+    .hero:after{background:linear-gradient(90deg,rgba(12,11,13,.93) 0%,rgba(13,12,14,.84) 24%,rgba(14,12,14,.66) 47%,rgba(12,11,13,.14) 77%,rgba(10,10,12,.08) 100%),linear-gradient(0deg,rgba(9,9,11,.55),transparent 32%)}
+    .hero h1{max-width:850px}
+    .nav-links a[href="#reviews"]{color:#f1ccb7}
+    .reviews{background:radial-gradient(circle at 100% 0%,rgba(157,90,125,.28),transparent 39%),linear-gradient(130deg,#241d27,#34232f 55%,#211b25);color:#f6edf1;overflow:hidden}
+    .reviews h2{color:#faf1f5}.reviews h2 em{color:#e6a8c2}
+    .reviews .eyebrow{color:#e4a9c3}.reviews .eyebrow:before{background:#e4a9c3}
+    .reviews .section-intro{color:#cfbac7}
+    .reviews-layout{display:grid;grid-template-columns:minmax(280px,.8fr) minmax(0,1.75fr);gap:23px;align-items:start}
+    .reviews-poster{position:relative;display:block;padding:0;border:1px solid rgba(240,202,226,.37);background:#231a24;width:100%;cursor:zoom-in;text-align:left;box-shadow:0 24px 60px rgba(0,0,0,.25)}
+    .reviews-poster img{display:block;width:100%;height:auto;max-height:830px;object-fit:cover;object-position:top}
+    .poster-cta{position:absolute;bottom:0;left:0;right:0;padding:26px 18px 17px;background:linear-gradient(0deg,rgba(20,12,21,.95),transparent);font-size:12px;color:#fff;letter-spacing:.04em;text-align:center}
+    .testimonial-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;align-content:start}
+    .testimonial-card{background:linear-gradient(130deg,rgba(116,74,99,.57),rgba(60,39,53,.82));border:1px solid rgba(245,196,225,.22);border-radius:17px;padding:20px 19px;box-shadow:0 10px 26px rgba(0,0,0,.09);backdrop-filter:blur(6px)}
+    .testimonial-card header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px}
+    .testimonial-card strong{font-size:13px;line-height:1.35;color:#ffe6ee;letter-spacing:.01em}
+    .testimonial-card .qmark{font:italic 45px/.8 Georgia,serif;color:#df9cb9;opacity:.85}
+    .testimonial-card p{margin:0;font-size:13px;line-height:1.68;color:#f0e4eb}
+    .testimonial-card .qsource{display:inline-block;margin-top:10px;color:#d9abc5;font-size:10px;letter-spacing:.09em;text-transform:uppercase}
+    .reviews-note{margin:22px 0 0;color:#d2b7c4;font-size:13px;line-height:1.8}
+    .review-dialog{position:fixed;inset:0;max-width:min(94vw,660px);max-height:92dvh;background:#221923;padding:14px;border:1px solid #9e748a;overflow-y:auto;box-shadow:0 0 100px #0009;color:white}
+    .review-dialog::backdrop{background:#090609df}
+    .review-dialog img{width:100%;height:auto}
+    .review-close{position:sticky;float:right;top:0;background:#faeef4;color:#2a2029;border:0;padding:9px 13px;font-size:12px;font-weight:700;z-index:2}
+    .contact-socials,.footer-socials{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+    .contact-socials a,.footer-socials a{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid rgba(255,255,255,.38);color:#f6eae6;padding:9px 12px;min-height:40px;font-size:12px;letter-spacing:.03em;transition:background .2s,border-color .2s}
+    .contact-socials a:hover,.footer-socials a:hover{background:rgba(231,187,162,.13);border-color:#e7bba2}
+    .direct-email{display:block;word-break:break-word;color:#f6c2a5;font-size:17px;margin-top:17px;text-decoration:underline;text-underline-offset:4px}
+    .footer-socials{margin-top:0}.footer-socials a{min-height:35px;padding:6px 9px;font-size:11px}
+    .form-hint a{color:#9d5434;text-decoration:underline;text-underline-offset:3px}
+    .form-message .actions a{display:inline-flex;align-items:center}
+    :focus-visible{outline:3px solid #dcaf97;outline-offset:3px}
+    @media(max-width:1080px){.reviews-layout{grid-template-columns:minmax(220px,.65fr) minmax(0,1.5fr)}.testimonial-card{padding:17px 14px}.testimonial-card p{font-size:12px}}
+    @media(max-width:780px){.hero-image{background-position:60% center}.hero:after{background:linear-gradient(90deg,rgba(9,9,11,.89) 0%,rgba(10,10,11,.78) 30%,rgba(11,10,12,.48) 65%,rgba(12,10,12,.22) 100%),linear-gradient(0deg,rgba(8,7,9,.5),transparent 27%)}.reviews-layout{grid-template-columns:1fr}.reviews-poster{max-width:390px;margin-inline:auto}.reviews-poster img{max-height:none}.testimonial-grid{grid-template-columns:repeat(2,1fr)}.contact-socials{margin-bottom:25px}}
+    @media(max-width:520px){.hero-image{background-position:60% center}.hero:after{background:linear-gradient(90deg,rgba(10,10,12,.88),rgba(10,9,11,.68) 62%,rgba(12,11,13,.3))}.testimonial-grid{grid-template-columns:1fr}.testimonial-card p{font-size:13px}.footer-socials{width:100%;justify-content:center}.footer-inner{justify-content:center;text-align:center}.contact-socials a{font-size:11px}}
+
+
+    /* More real photography: event reportage & a separate editorial portrait gallery */
+    .portfolio-item img{object-position:center center}
+    .portfolio-item[data-category="wedding"] img{object-position:50% 44%}
+    .portfolio-item[data-caption="Вместе с аудиторией"] img{object-position:50% 38%}
+    .studio{background:#e9e1d8;position:relative;overflow:hidden}
+    .studio .section-header{margin-bottom:39px}
+    .studio .eyebrow{color:#916e5d}
+    .studio .section-intro{max-width:440px}
+    .studio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+    .studio-shot{position:relative;display:block;border:0;padding:0;background:#c7b8a9;overflow:hidden;aspect-ratio:3/4;width:100%;text-align:left;cursor:zoom-in;color:white;isolation:isolate}
+    .studio-shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 36%;transition:transform .5s ease,filter .4s ease;filter:saturate(.88)}
+    .studio-shot:hover img,.studio-shot:focus-visible img{transform:scale(1.045);filter:saturate(1)}
+    .studio-shot:after{position:absolute;content:"";inset:50% 0 0;pointer-events:none;background:linear-gradient(0deg,rgba(12,12,12,.66),transparent)}
+    .studio-shot span{position:absolute;z-index:1;left:22px;right:14px;bottom:17px;font-family:var(--serif);font-size:clamp(18px,2vw,28px);line-height:1.1}
+    .studio-shot span small{font:700 10px/1.6 var(--sans);display:block;text-transform:uppercase;letter-spacing:.17em;color:#edd6c7;margin-bottom:7px}
+    .studio-shot .shot-plus{top:14px;right:14px;left:auto;bottom:auto;width:33px;height:33px;border:1px solid rgba(255,255,255,.85);display:grid;place-items:center;font:300 22px var(--sans);}
+    .studio-shot:nth-child(1) img{object-position:50% 30%}
+    .studio-shot:nth-child(2) img{object-position:50% 29%}
+    .studio-shot:nth-child(3) img{object-position:50% 38%}
+    .studio-shot:nth-child(4) img{object-position:50% 29%}
+    .studio-shot:nth-child(5) img{object-position:50% 28%}
+    .studio-shot:nth-child(6) img{object-position:50% 27%}
+    .studio-note{color:#71685e;margin:21px 0 0;font-size:13px;line-height:1.7}
+    @media(max-width:780px){.studio-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.studio-shot span{left:14px;bottom:12px;font-size:23px}.studio-shot .shot-plus{width:27px;height:27px;font-size:19px}}
+    @media(max-width:520px){.studio-grid{gap:9px}.studio-shot{aspect-ratio:3/4}.studio-shot span{left:10px;bottom:8px;font-size:18px}.studio-shot span small{font-size:8px;letter-spacing:.1em;margin-bottom:3px}.studio-shot .shot-plus{right:9px;top:9px}.studio-note{font-size:12px}}
+
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <header class="site-header" id="siteHeader">
+    <div class="nav container">
+      <a class="brand" href="#top" aria-label="Юлия Богданова — на главную">
+        <span class="brand-mark" aria-hidden="true">ЮБ</span>
+        <span class="brand-title">Юлия Богданова<small>ведущая мероприятий</small></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
+        <a href="#about">Обо мне</a><a href="#services">Мероприятия</a><a href="#portfolio">Портфолио</a><a href="#reviews">Отзывы</a>
+        <a class="nav-cta" href="#contact">Обсудить дату</a>
+      </nav>
+      <button class="menu-button" id="menuButton" aria-label="Открыть меню" aria-expanded="false" aria-controls="navLinks"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-label="Юлия Богданова — ведущая мероприятий">
+      <div class="hero-image" aria-hidden="true"></div>
+      <div class="hero-content container">
+        <span class="eyebrow eyebrow--light">Ведущая ваших особенных событий</span>
+        <h1>Юлия <em>Богданова</em></h1>
+        <p class="hero-description">Не просто веду мероприятия. Создаю атмосферу, в которой легко быть собой, искренне улыбаться и проживать каждый момент.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Обсудить ваше событие <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></a>
+          <a class="btn btn-outline-white" href="#portfolio">Смотреть портфолио</a>
+        </div>
+      </div>
+      <div class="hero-bottom"><div class="container"><span class="scroll-cue"><span class="line"></span>Листайте вниз</span><span class="note">Искренне · Стильно · По-настоящему</span></div></div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-layout">
+        <div class="about-visual reveal">
+          <img class="about-photo" src="assets/about.webp" loading="lazy" alt="Портрет Юлии Богдановой в бежевом жакете" width="720" height="1080">
+          <img class="about-photo-small" src="assets/about2.webp" loading="lazy" alt="Юлия Богданова в белой рубашке и чёрном жакете" width="400" height="600">
+          <span class="about-corner" aria-hidden="true">*</span>
+        </div>
+        <div class="about-copy reveal">
+          <div class="eyebrow">Давайте познакомимся</div>
+          <h2>Привет! <br>Я <em>Юлия.</em></h2>
+          <p class="lead">Я люблю события, в которых есть жизнь: улыбки, настоящие эмоции, тёплые встречи и немного приятной неожиданности.</p>
+          <p>Для меня ведущая — это не человек, который просто объявляет следующий номер. Это тот, кто чувствует настроение зала, объединяет гостей и помогает каждому почувствовать себя частью происходящего.</p>
+          <p>Мне близки живое общение, бережный юмор и внимание к деталям. Важно, чтобы вы наслаждались своим событием, а не переживали, что что-то пойдёт не так.</p>
+          <div class="signature">С теплом, Юлия</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-header reveal">
+          <div><div class="eyebrow">Форматы мероприятий</div><h2>Для каждого повода <br><em>свой характер</em></h2></div>
+          <p class="section-intro">От душевного камерного вечера до большого события — в центре всегда люди и атмосфера, ради которой они собираются.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal"><span class="service-num">01</span><svg class="service-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28S4 21 4 12a7 7 0 0 1 12-5 7 7 0 0 1 12 5c0 9-12 16-12 16Z"/></svg><h3>Свадьбы</h3><p>Ваша история любви без шаблонов и неловкости — с теплом, юмором и красивыми моментами.</p></article>
+          <article class="service-card reveal"><span class="service-num">02</span><svg class="service-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 11h22v17H5zM11 11V7a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v4M5 18h22M14 17v3h4v-3"/></svg><h3>Корпоративы</h3><p>Вечера для команды, где официальная часть органично превращается в праздник.</p></article>
+          <article class="service-card reveal"><span class="service-num">03</span><svg class="service-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 14h22v14H5zM16 14v14M5 20h22M9 13c-6-1-5-9 0-9 4 0 7 6 7 10 0-4 3-10 7-10 5 0 6 8 0 9"/></svg><h3>Дни рождения и юбилеи</h3><p>Праздник, наполненный дорогими людьми, личными историями и яркими эмоциями.</p></article>
+          <article class="service-card reveal"><span class="service-num">04</span><svg class="service-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 27h18M10 27V15l6-5 6 5v12M16 10V3M11 7h10M14 19h4M14 23h4"/></svg><h3>Форумы и церемонии</h3><p>Точные акценты, уверенная подача и достойное звучание важных моментов программы.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section approach" id="approach">
+      <div class="container">
+        <div class="approach-header reveal"><div class="eyebrow eyebrow--light">Что для меня важно</div><h2>Праздник без неловких пауз.<br><em>Искренность без сценарных рамок.</em></h2></div>
+        <div class="principles">
+          <div class="principle reveal"><span class="number">01</span><h3>Легко и свободно</h3><p>Никого не заставляем участвовать — вовлекаем так, чтобы каждому было комфортно.</p></div>
+          <div class="principle reveal"><span class="number">02</span><h3>Без шаблонов</h3><p>В каждом событии есть свой характер, и программа должна его подчёркивать.</p></div>
+          <div class="principle reveal"><span class="number">03</span><h3>Чувствую аудиторию</h3><p>Вовремя добавляю динамики или даю пространству для искренних моментов.</p></div>
+          <div class="principle reveal"><span class="number">04</span><h3>Внимание к деталям</h3><p>Продумываем важное заранее, чтобы во время события вы могли просто наслаждаться.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-header reveal">
+          <div><div class="eyebrow">Моменты в кадре</div><h2>Лучше один раз <em>увидеть</em></h2></div>
+          <p class="section-intro">Настоящие фотографии Юлии на событиях: когда включён микрофон, аудитория рядом, а каждый момент происходит здесь и сейчас.</p>
+        </div>
+        <div class="portfolio-tabs" role="group" aria-label="Фильтр фотографий">
+          <button type="button" class="active" data-filter="all" aria-pressed="true">Все фотографии</button>
+          <button type="button" data-filter="forums" aria-pressed="false">Форумы</button>
+          <button type="button" data-filter="ceremony" aria-pressed="false">Церемонии</button>
+          <button type="button" data-filter="youth" aria-pressed="false">Молодёжные события</button>
+          <button type="button" data-filter="speaking" aria-pressed="false">Выступления</button>
+          <button type="button" data-filter="wedding" aria-pressed="false">Свадьбы</button>
+          <button type="button" data-filter="backstage" aria-pressed="false">За кадром</button>
+        </div>
+        <div class="portfolio-grid" id="portfolioGrid">
+          <button class="portfolio-item tall reveal" type="button" data-category="forums" data-caption="В центре внимания" aria-label="Открыть фотографию: В центре внимания"><img src="assets/portfolio1.webp" loading="lazy" alt="Юлия в красном жакете ведёт программу на сцене" width="1280" height="853"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Форумы</small><strong>В центре внимания</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="ceremony" data-caption="Моменты, которые важны" aria-label="Открыть фотографию: Моменты, которые важны"><img src="assets/event-red-stage-latest.webp" loading="lazy" alt="Юлия Богданова ведёт церемонию в красном жакете с микрофоном и сценарием" width="1536" height="864"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Церемонии</small><strong>Моменты, которые важны</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="youth" data-caption="Энергия событий" aria-label="Открыть фотографию: Энергия событий"><img src="assets/portfolio3.webp" loading="lazy" alt="Юлия с микрофоном среди участников молодёжного мероприятия" width="1280" height="853"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Молодёжные события</small><strong>Энергия событий</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="speaking" data-caption="Слово перед аудиторией" aria-label="Открыть фотографию: Слово перед аудиторией"><img src="assets/portfolio4.webp" loading="lazy" alt="Юлия выступает за трибуной с микрофоном" width="1280" height="851"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Выступления</small><strong>Слово перед аудиторией</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="forums" data-caption="Живой диалог" aria-label="Открыть фотографию: Живой диалог"><img src="assets/portfolio5.webp" loading="lazy" alt="Юлия говорит в микрофон во время мероприятия" width="1280" height="935"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Форумы</small><strong>Живой диалог</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="youth" data-caption="Быть частью происходящего" aria-label="Открыть фотографию: Быть частью происходящего"><img src="assets/portfolio6.webp" loading="lazy" alt="Юлия на молодёжном событии показывает бейдж участника" width="1280" height="853"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Молодёжные события</small><strong>Быть частью происходящего</strong></span></button>
+
+          <button class="portfolio-item reveal" type="button" data-category="youth" data-caption="Вместе с аудиторией" aria-label="Открыть фотографию: Вместе с аудиторией"><img src="assets/event-dialogue.webp" loading="lazy" alt="Юлия Богданова с микрофоном разговаривает с участниками события" width="1536" height="1536"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Молодёжные события</small><strong>Вместе с аудиторией</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="wedding" data-caption="Искренние моменты" aria-label="Открыть фотографию: Искренние моменты"><img src="assets/event-wedding.webp" loading="lazy" alt="Юлия Богданова с микрофоном среди гостей на свадебном банкете" width="1536" height="1024"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Свадьбы</small><strong>Искренние моменты</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="speaking" data-caption="Свой стиль общения" aria-label="Открыть фотографию: Свой стиль общения"><img src="assets/event-audience.webp" loading="lazy" alt="Юлия Богданова выступает с микрофоном перед залом на мероприятии" width="1536" height="1024"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Выступления</small><strong>Свой стиль общения</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="youth" data-caption="Когда важен каждый голос" aria-label="Открыть фотографию: Когда важен каждый голос"><img src="assets/event-stage.webp" loading="lazy" alt="Юлия Богданова с микрофоном выступает перед зрителями" width="1536" height="1145"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Молодёжные события</small><strong>Когда важен каждый голос</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="speaking" data-caption="Слово со сцены" aria-label="Открыть фотографию: Слово со сцены"><img src="assets/event-microphone-black.webp" loading="lazy" alt="Юлия Богданова ведёт молодёжное мероприятие на сцене в чёрном жакете" width="1536" height="1024"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>Выступления</small><strong>Слово со сцены</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="backstage" data-caption="Люди и атмосфера" aria-label="Открыть фотографию: Люди и атмосфера"><img src="assets/event-together.webp" loading="lazy" alt="Юлия Богданова с участницей на праздничном мероприятии с цветочным оформлением" width="1152" height="1536"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>За кадром</small><strong>Люди и атмосфера</strong></span></button>
+          <button class="portfolio-item reveal" type="button" data-category="backstage" data-caption="После события" aria-label="Открыть фотографию: После события"><img src="assets/event-colleague.webp" loading="lazy" alt="Юлия Богданова с коллегой на мероприятии перед тёмными шторами" width="1152" height="1536"><span class="plus" aria-hidden="true">+</span><span class="portfolio-item-info"><small>За кадром</small><strong>После события</strong></span></button>
+        </div>
+        <p class="portfolio-caption">Нажмите на фотографию, чтобы рассмотреть её подробнее.</p>
+      </div>
+    </section>
+
+    <section class="section studio" id="photostory" aria-labelledby="studioHeading">
+      <div class="container">
+        <div class="section-header reveal">
+          <div><div class="eyebrow">Немного ближе</div><h2 id="studioHeading">Не только <em>за микрофоном</em></h2></div>
+          <p class="section-intro">На сцене — ведущая. А за пределами сцены — просто Юлия. Разные настроения, образы и моменты, которые тоже рассказывают мою историю.</p>
+        </div>
+        <div class="studio-grid" id="studioGrid">
+          <button class="studio-shot reveal" type="button" data-caption="Характер и стиль" aria-label="Открыть фото: Характер и стиль"><img src="assets/portrait-dark.webp" loading="lazy" decoding="async" alt="Юлия Богданова в бежевом жакете на тёмном фоне" width="1024" height="1536"><span class="shot-plus" aria-hidden="true">+</span><span><small>Юлия Богданова · фотопортрет</small>Характер и стиль</span></button>
+          <button class="studio-shot reveal" type="button" data-caption="Элегантность" aria-label="Открыть фото: Элегантность"><img src="assets/portrait-white.webp" loading="lazy" decoding="async" alt="Юлия Богданова в белом жакете на светлом фоне" width="1024" height="1536"><span class="shot-plus" aria-hidden="true">+</span><span><small>Юлия Богданова · фотопортрет</small>Элегантность</span></button>
+          <button class="studio-shot reveal" type="button" data-caption="Настроение" aria-label="Открыть фото: Настроение"><img src="assets/portrait-cream.webp" loading="lazy" decoding="async" alt="Юлия Богданова в светлом костюме сидит в студии" width="1024" height="1536"><span class="shot-plus" aria-hidden="true">+</span><span><small>Юлия Богданова · фотопортрет</small>Настроение</span></button>
+          <button class="studio-shot reveal" type="button" data-caption="За кадром" aria-label="Открыть фото: За кадром"><img src="assets/portrait-work.webp" loading="lazy" decoding="async" alt="Юлия Богданова в рабочей атмосфере с ноутбуком" width="1024" height="1536"><span class="shot-plus" aria-hidden="true">+</span><span><small>Юлия Богданова · фотопортрет</small>За кадром</span></button>
+          <button class="studio-shot reveal" type="button" data-caption="Уверенность" aria-label="Открыть фото: Уверенность"><img src="assets/portrait-suit.webp" loading="lazy" decoding="async" alt="Юлия Богданова в тёмном костюме на фотосессии" width="1024" height="1536"><span class="shot-plus" aria-hidden="true">+</span><span><small>Юлия Богданова · фотопортрет</small>Уверенность</span></button>
+          <button class="studio-shot reveal" type="button" data-caption="Настоящая я" aria-label="Открыть фото: Настоящая я"><img src="assets/portrait-shirt.webp" loading="lazy" decoding="async" alt="Юлия Богданова в белой рубашке и чёрном жакете" width="1024" height="1536"><span class="shot-plus" aria-hidden="true">+</span><span><small>Юлия Богданова · фотопортрет</small>Настоящая я</span></button>
+          <button class="studio-shot reveal" type="button" data-caption="Рабочие моменты" aria-label="Открыть фото: Рабочие моменты"><img src="assets/portrait-laptop.webp" loading="lazy" decoding="async" alt="Юлия Богданова готовится к работе с ноутбуком в белом жакете" width="1024" height="1536"><span class="shot-plus" aria-hidden="true">+</span><span><small>За кадром · подготовка</small>Рабочие моменты</span></button>
+        </div>
+        <p class="studio-note">Каждую фотографию можно открыть крупнее и пролистать всю серию.</p>
+      </div>
+    </section>
+
+    <section class="quote-section" aria-label="Философия ведущей">
+      <div class="container reveal"><div class="eyebrow">Всё ради одного</div><blockquote>Чтобы спустя время вы вспоминали не программу по минутам, а то, <em>как здорово вам было вместе.</em></blockquote><p>События, которые остаются с вами</p></div>
+    </section>
+
+
+    <section class="section reviews" id="reviews" aria-labelledby="reviewsHeading">
+      <div class="container">
+        <div class="section-header reveal">
+          <div><div class="eyebrow">Самые ценные слова — от вас</div><h2 id="reviewsHeading">Отзывы <em>о моей работе</em></h2></div>
+          <p class="section-intro">Свадьбы, праздники, важные встречи. За каждым отзывом — чья-то история и доверие, которое для меня бесценно.</p>
+        </div>
+        <div class="reviews-layout">
+          <button class="reviews-poster reveal" type="button" id="openReviews" aria-label="Открыть оригинальный коллаж отзывов в полном размере">
+            <img src="assets/reviews-original.jpg" alt="Оригинальный коллаж с шестью отзывами о работе ведущей Юлии Богдановой" loading="lazy" width="864" height="1536">
+            <span class="poster-cta">Увеличить оригинальные отзывы ↗</span>
+          </button>
+          <div class="testimonial-grid">
+            <article class="testimonial-card reveal"><header><strong>Катерина Шутемова</strong><span class="qmark" aria-hidden="true">“</span></header><p>«Была на „Празднике материнства“, Юлия была ведущей! Очень крутая: говорит чётко и грамотно, приятный тембр! Уместный юмор!»</p><span class="qsource">Праздник материнства</span></article>
+            <article class="testimonial-card reveal"><header><strong>Даша Кобелева</strong><span class="qmark" aria-hidden="true">“</span></header><p>«Весёлая, харизматичная, яркая. Всегда подстраивается под каждого человека и готова на любое мероприятие! Работать вместе одно удовольствие, рекомендую ❤️»</p><span class="qsource">Совместная работа</span></article>
+            <article class="testimonial-card reveal"><header><strong>Юлия Шведчикова</strong><span class="qmark" aria-hidden="true">“</span></header><p>«Была ведущей на моей свадьбе, всё было шикарно 🔥 Юмор, харизма, характер 👍»</p><span class="qsource">Свадьба</span></article>
+            <article class="testimonial-card reveal"><header><strong>Юлия Пермякова</strong><span class="qmark" aria-hidden="true">“</span></header><p>«Юльчик, огонь, бомба, фейерверк!!! Спасибо большое за проведённый банкет! Я в восторге, гости тоже! Расходиться никто не хотел!»</p><span class="qsource">Банкет</span></article>
+            <article class="testimonial-card reveal"><header><strong>Людмила Руцина</strong><span class="qmark" aria-hidden="true">“</span></header><p>«Если вам нужно не просто „провести мероприятие“, а нужен вовлечённый в ваш корпоратив, семинар, юбилей… свой человек, то вам сюда. …100% понимания, включения, клиентоориентированности и skill создавать лёгкость!»</p><span class="qsource">Корпоративное событие</span></article>
+            <article class="testimonial-card reveal"><header><strong>Екатерина Веретенникова</strong><span class="qmark" aria-hidden="true">“</span></header><p>«Юля — это восторг 💕 Юля проводила нашу свадьбу, после мероприятия гости подходили и говорили, что это лучшая свадьба, на которой они были. …Спасибо огромное за вечер, который мы запомним на всю жизнь!»</p><span class="qsource">Свадьба</span></article>
+          </div>
+        </div>
+        <p class="reviews-note">Здесь приведены выдержки из отзывов. Полные тексты можно прочитать на оригинальном изображении — нажмите на него.</p>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-header reveal"><div><div class="eyebrow">От идеи до аплодисментов</div><h2>Как мы создадим <em>ваш день</em></h2></div><p class="section-intro">Без сложных схем: сначала знакомимся, затем вместе продумываем детали — и создаём событие с вашим характером.</p></div>
+        <div class="steps-grid">
+          <div class="step reveal"><span>01</span><h3>Знакомимся</h3><p>Обсуждаем повод, дату, гостей и ваши ожидания от события.</p></div>
+          <div class="step reveal"><span>02</span><h3>Находим формат</h3><p>Выбираем настроение и идеи, которые подойдут именно вашей компании.</p></div>
+          <div class="step reveal"><span>03</span><h3>Готовимся</h3><p>Продумываем структуру и ключевые моменты, согласовываем детали.</p></div>
+          <div class="step reveal"><span>04</span><h3>Празднуем!</h3><p>Вы проживаете свои лучшие моменты, а я помогаю им случиться.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container contact-layout">
+        <div class="contact-copy reveal">
+          <div class="eyebrow eyebrow--light">Начнём с разговора?</div>
+          <h2>У вашего события есть дата.<br><em>Давайте создадим историю.</em></h2>
+          <p>Расскажите немного о вашем мероприятии. Подберём формат, обсудим пожелания и найдём тот самый тон вашего события.</p>
+          <div class="contact-socials" aria-label="Юлия в социальных сетях">
+              <a target="_blank" rel="noopener noreferrer" href="https://vk.com/bodga_yulya">ВКонтакте ↗</a>
+              <a target="_blank" rel="noopener noreferrer" href="https://t.me/bodga_yulya">Telegram ↗</a>
+              <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/bodga_yulya/">Instagram ↗</a>
+            </div><a class="direct-email" href="mailto:bogdan-julya@mail.ru">bogdan-julya@mail.ru</a>
+          <div class="contact-micro">Юлия Богданова · Ведущая мероприятий</div>
+        </div>
+        <div class="contact-card reveal">
+          <h3>Расскажите о вашем событии</h3>
+          <form id="inquiryForm" novalidate>
+            <div class="field-row"><div class="field"><label for="inquiryName">Как к вам обращаться *</label><input type="text" id="inquiryName" name="name" required maxlength="100" autocomplete="name" placeholder="Ваше имя"></div><div class="field"><label for="inquiryContact">Контакт для связи *</label><input type="text" id="inquiryContact" name="contact" required maxlength="150" placeholder="Телефон, Telegram или почта"></div></div>
+            <div class="field-row"><div class="field"><label for="inquiryType">Тип события</label><select id="inquiryType" name="type"><option>Свадьба</option><option>Корпоратив</option><option>День рождения / юбилей</option><option>Форум / церемония</option><option>Другое событие</option></select></div><div class="field"><label for="inquiryDate">Дата (если известна)</label><input id="inquiryDate" name="date" type="date"></div></div>
+            <div class="field"><label for="inquiryDetails">Немного о событии</label><textarea id="inquiryDetails" name="details" maxlength="1200" placeholder="Место, количество гостей, ваши пожелания..."></textarea></div>
+            <button class="btn btn-primary" type="submit">Подготовить письмо Юлии <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></button>
+            <p class="form-hint">Заявка будет адресована Юлии на <a href="mailto:bogdan-julya@mail.ru">bogdan-julya@mail.ru</a>. Для отправки нажмите «Открыть почту», затем «Отправить» в почтовой программе.</p>
+          </form>
+          <div class="form-message" id="formMessage" aria-live="polite" hidden><strong>Письмо готово. Отправьте его Юлии.</strong><textarea id="messageText" readonly aria-label="Подготовленный текст заявки"></textarea><div class="actions"><button type="button" id="copyInquiry">Скопировать текст</button><a id="emailInquiry" href="#contact">Отправить через почту ↗</a></div><div id="copyStatus" role="status" style="font-size:12px;margin-top:6px"></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><a class="footer-name" href="#top">Юлия Богданова</a><div class="footer-socials" aria-label="Контакты Юлии"><a target="_blank" rel="noopener noreferrer" href="https://vk.com/bodga_yulya">ВК ↗</a><a target="_blank" rel="noopener noreferrer" href="https://t.me/bodga_yulya">Telegram ↗</a><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/bodga_yulya/">Instagram ↗</a><a href="mailto:bogdan-julya@mail.ru">Почта ↗</a></div><span class="footer-copy">© <span id="copyrightYear">2026</span> · Ведущая мероприятий</span><a class="footer-up" href="#top">Наверх ↑</a></div></footer>
+
+<dialog class="review-dialog" id="reviewsDialog" aria-label="Оригинальные отзывы о Юлии Богдановой"><button type="button" class="review-close" id="closeReviews" aria-label="Закрыть отзывы">Закрыть ✕</button><img src="assets/reviews-original.jpg" alt="Полные оригинальные отзывы о работе Юлии Богдановой" width="864" height="1536"></dialog>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" tabindex="-1" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Закрыть">×</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Предыдущая фотография">‹</button>
+    <img id="lightboxImage" alt="Фотография из портфолио" src="" />
+    <button class="lightbox-next" id="lightboxNext" aria-label="Следующая фотография">›</button>
+    <div class="lightbox-text" id="lightboxCaption"></div>
+  </div>
+  <script>
+    (() => {
+      'use strict';
+      // Контактный e-mail Юлии. Письмо создается через mailto; пользователь завершает отправку в почтовой программе.
+      const SETTINGS = { email: 'bogdan-julya@mail.ru' };
+
+      const header = document.getElementById('siteHeader');
+      const links = document.getElementById('navLinks');
+      const menuButton = document.getElementById('menuButton');
+      const closeMenu = () => { links.classList.remove('show'); header.classList.remove('menu-open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-label', 'Открыть меню'); };
+      const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 35);
+      window.addEventListener('scroll', updateHeader, { passive: true }); updateHeader();
+      menuButton.addEventListener('click', () => { const open = !links.classList.contains('show'); links.classList.toggle('show', open); header.classList.toggle('menu-open', open); menuButton.setAttribute('aria-expanded', String(open)); menuButton.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню'); });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      document.addEventListener('click', e => { if(!header.contains(e.target)) closeMenu(); });
+      document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+      if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }); }, {threshold:.07,rootMargin:'0px 0px 50px 0px'});
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      } else { document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible')); }
+
+      const filters = [...document.querySelectorAll('[data-filter]')];
+      const items = [...document.querySelectorAll('.portfolio-item')];
+      const studioItems = [...document.querySelectorAll('.studio-shot')];
+      filters.forEach(filter => filter.addEventListener('click', () => {
+        const selected = filter.dataset.filter;
+        filters.forEach(btn => { btn.classList.toggle('active', btn === filter); btn.setAttribute('aria-pressed', String(btn===filter)); });
+        items.forEach(el => { el.hidden = selected !== 'all' && el.dataset.category !== selected; });
+      }));
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImage');
+      const lbCaption = document.getElementById('lightboxCaption');
+      let currentIndex = 0; let previouslyFocused = null;
+      let openGroup = [];
+      const visibleItems = () => openGroup;
+      function showImage(index) {
+        const visible = visibleItems(); if(!visible.length)return;
+        currentIndex = (index + visible.length) % visible.length;
+        const item = visible[currentIndex]; const img = item.querySelector('img');
+        lbImg.src = img.src; lbImg.alt = img.alt; lbCaption.textContent = item.dataset.caption || '';
+      }
+      function openLightbox(item) { previouslyFocused = document.activeElement; openGroup = item.classList.contains('studio-shot') ? studioItems : items.filter(i => !i.hidden); lightbox.hidden = false; document.body.classList.add('dialog-open'); showImage(openGroup.indexOf(item)); document.getElementById('lightboxClose').focus(); }
+      function closeLightbox() { if(lightbox.hidden) return; lightbox.hidden = true; document.body.classList.remove('dialog-open'); lbImg.removeAttribute('src'); if(previouslyFocused && previouslyFocused.focus) previouslyFocused.focus(); }
+      [...items,...studioItems].forEach(item => item.addEventListener('click', () => openLightbox(item)));
+      document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+      document.getElementById('lightboxPrev').addEventListener('click', () => showImage(currentIndex-1));
+      document.getElementById('lightboxNext').addEventListener('click', () => showImage(currentIndex+1));
+      lightbox.addEventListener('click', e => { if(e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', e => {if(e.key === 'Escape'){closeLightbox();closeMenu();} if(!lightbox.hidden){if(e.key === 'ArrowLeft')showImage(currentIndex-1);if(e.key === 'ArrowRight')showImage(currentIndex+1);if(e.key==='Tab'){const focusables=[document.getElementById('lightboxClose'),document.getElementById('lightboxPrev'),document.getElementById('lightboxNext')];const i=focusables.indexOf(document.activeElement);if(e.shiftKey&&i===0){e.preventDefault();focusables[2].focus();}else if(!e.shiftKey&&i===2){e.preventDefault();focusables[0].focus();}}}});
+
+      const reviewDialog = document.getElementById('reviewsDialog');
+      document.getElementById('openReviews').addEventListener('click', () => reviewDialog.showModal());
+      document.getElementById('closeReviews').addEventListener('click', () => reviewDialog.close());
+      reviewDialog.addEventListener('click', e => { if (e.target === reviewDialog) reviewDialog.close(); });
+
+      const form = document.getElementById('inquiryForm');
+      const formMessage = document.getElementById('formMessage');
+      const textArea = document.getElementById('messageText');
+      const copyStatus = document.getElementById('copyStatus');
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('inquiryName').value.trim();
+        const contact = document.getElementById('inquiryContact').value.trim();
+        if(!name || !contact){ if(!name) document.getElementById('inquiryName').focus(); else document.getElementById('inquiryContact').focus(); return; }
+        const type = document.getElementById('inquiryType').value;
+        const date = document.getElementById('inquiryDate').value;
+        const details = document.getElementById('inquiryDetails').value.trim();
+        const formattedDate = date ? date.split('-').reverse().join('.') : 'Уточняется';
+        const text = `Здравствуйте, Юлия! Хочу обсудить проведение мероприятия.\n\nИмя: ${name}\nКонтакт: ${contact}\nТип мероприятия: ${type}\nДата: ${formattedDate}\nДетали: ${details || 'Обсудим при общении.'}`.replaceAll('\\n','\n');
+        textArea.value = text; formMessage.hidden = false; copyStatus.textContent = '';
+        const href = `mailto:${encodeURIComponent(SETTINGS.email)}?subject=${encodeURIComponent('Заявка на мероприятие — Юлия Богданова')}&body=${encodeURIComponent(text)}`;
+        document.getElementById('emailInquiry').href = href;
+        formMessage.scrollIntoView({behavior:'smooth',block:'nearest'});
+      });
+      document.getElementById('copyInquiry').addEventListener('click', async () => {
+        try { if(navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(textArea.value); else {textArea.select();if(!document.execCommand('copy')) throw new Error('copy');} copyStatus.textContent='Текст скопирован. Его можно отправить Юлии в удобном мессенджере.'; }
+        catch(e) { textArea.focus();textArea.select();copyStatus.textContent='Выделите текст и скопируйте его вручную.'; }
+      });
+    })();
+  </script>
+</body>
+</html>
