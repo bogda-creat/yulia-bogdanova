@@ -148,6 +148,12 @@
     .form-message .actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
     .form-message .actions button,.form-message .actions a{border:1px solid #ad8067;background:white;color:#68422e;padding:8px 13px;font:700 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
     .privacy-note{font-size:11px;color:#8b8279;line-height:1.7;margin:10px 0 0}
+    .consent-label{display:flex!important;align-items:flex-start;gap:11px;letter-spacing:0!important;text-transform:none!important;font-size:12px!important;font-weight:400!important;line-height:1.55;color:#6c625c;cursor:pointer}
+    .consent-label input{width:18px!important;height:18px!important;min-height:18px!important;flex:none;margin:1px 0 0;accent-color:var(--accent)}
+    .consent-label a{color:#9d5434;text-decoration:underline;text-underline-offset:3px}
+    .form-message.is-success{background:#edf5ee;border-color:#a0c0a8;color:#28583a}
+    .form-message.is-error{background:#fff0ed;border-color:#d5a398;color:#823a2a}
+    #inquirySubmit:disabled{opacity:.65;cursor:wait;transform:none}
     /* FOOTER */
     .footer{background:#171717;color:#eee6e0;padding:32px 0}
     .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
@@ -426,18 +432,27 @@
         <div class="contact-card reveal">
           <h3>Расскажите о вашем событии</h3>
           <form id="inquiryForm" novalidate>
-            <div class="field-row"><div class="field"><label for="inquiryName">Как к вам обращаться *</label><input type="text" id="inquiryName" name="name" required maxlength="100" autocomplete="name" placeholder="Ваше имя"></div><div class="field"><label for="inquiryContact">Контакт для связи *</label><input type="text" id="inquiryContact" name="contact" required maxlength="150" placeholder="Телефон, Telegram или почта"></div></div>
-            <div class="field-row"><div class="field"><label for="inquiryType">Тип события</label><select id="inquiryType" name="type"><option>Свадьба</option><option>Корпоратив</option><option>День рождения / юбилей</option><option>Форум / церемония</option><option>Другое событие</option></select></div><div class="field"><label for="inquiryDate">Дата (если известна)</label><input id="inquiryDate" name="date" type="date"></div></div>
+            <div class="field"><label for="inquiryEmail">Ваш email для ответа *</label><input type="email" id="inquiryEmail" name="email" required maxlength="180" autocomplete="email" inputmode="email" placeholder="name@example.com"></div>
+            <div class="field-row">
+              <div class="field"><label for="inquiryName">Как к вам обращаться *</label><input type="text" id="inquiryName" name="name" required maxlength="100" autocomplete="name" placeholder="Ваше имя"></div>
+              <div class="field"><label for="inquiryContact">Телефон или Telegram (по желанию)</label><input type="text" id="inquiryContact" name="contact" maxlength="150" placeholder="+7… или @username"></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label for="inquiryType">Тип события</label><select id="inquiryType" name="type"><option>Свадьба</option><option>Корпоратив</option><option>День рождения / юбилей</option><option>Форум / церемония</option><option>Другое событие</option></select></div>
+              <div class="field"><label for="inquiryDate">Дата (если известна)</label><input id="inquiryDate" name="date" type="date"></div>
+            </div>
             <div class="field"><label for="inquiryDetails">Немного о событии</label><textarea id="inquiryDetails" name="details" maxlength="1200" placeholder="Место, количество гостей, ваши пожелания..."></textarea></div>
-            <button class="btn btn-primary" type="submit">Подготовить письмо Юлии <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></button>
-            <p class="form-hint">Заявка будет адресована Юлии на <a href="mailto:bogdan-julya@mail.ru">bogdan-julya@mail.ru</a>. Для отправки нажмите «Открыть почту», затем «Отправить» в почтовой программе.</p>
+            <div class="field" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="inquiryHoney">Оставьте поле пустым</label><input id="inquiryHoney" name="_honey" tabindex="-1" autocomplete="off"></div>
+            <div class="field form-consent"><label class="consent-label" for="inquiryConsent"><input type="checkbox" id="inquiryConsent" required><span>Согласен(на) на обработку указанных данных для ответа на заявку и их передачу сервису отправки FormSubmit. <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">Политика сервиса ↗</a></span></label></div>
+            <button class="btn btn-primary" type="submit" id="inquirySubmit">Отправить заявку <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7"/></svg></button>
+            <p class="form-hint">Заявка отправляется прямо с сайта на <strong>bogdan-julya@mail.ru</strong>. Открывать свою почту не нужно.</p>
           </form>
-          <div class="form-message" id="formMessage" aria-live="polite" hidden><strong>Письмо готово. Отправьте его Юлии.</strong><textarea id="messageText" readonly aria-label="Подготовленный текст заявки"></textarea><div class="actions"><button type="button" id="copyInquiry">Скопировать текст</button><a id="emailInquiry" href="#contact">Отправить через почту ↗</a></div><div id="copyStatus" role="status" style="font-size:12px;margin-top:6px"></div></div>
+          <div class="form-message" id="formMessage" role="status" aria-live="polite" hidden></div>
         </div>
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="container footer-inner"><a class="footer-name" href="#top">Юлия Богданова</a><div class="footer-socials" aria-label="Контакты Юлии"><a target="_blank" rel="noopener noreferrer" href="https://vk.com/bodga_yulya">ВК ↗</a><a target="_blank" rel="noopener noreferrer" href="https://t.me/bodga_yulya">Telegram ↗</a><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/bodga_yulya/">Instagram ↗</a><a href="mailto:bogdan-julya@mail.ru">Почта ↗</a></div><span class="footer-copy">© <span id="copyrightYear">2026</span> · Ведущая мероприятий</span><a class="footer-up" href="#top">Наверх ↑</a></div></footer>
+  <footer class="footer"><div class="container footer-inner"><a class="footer-name" href="#top">Юлия Богданова</a><div class="footer-socials" aria-label="Контакты Юлии"><a target="_blank" rel="noopener noreferrer" href="https://vk.ru/bogda_yulya">ВК ↗</a><a target="_blank" rel="noopener noreferrer" href="https://t.me/bodga_yulya">Telegram ↗</a><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/bodga_yulya/">Instagram ↗</a><a href="mailto:bogdan-julya@mail.ru">Почта ↗</a></div><span class="footer-copy">© <span id="copyrightYear">2026</span> · Ведущая мероприятий</span><a class="footer-up" href="#top">Наверх ↑</a></div></footer>
 
 <dialog class="review-dialog" id="reviewsDialog" aria-label="Оригинальные отзывы о Юлии Богдановой"><button type="button" class="review-close" id="closeReviews" aria-label="Закрыть отзывы">Закрыть ✕</button><img src="assets/reviews-original.jpg" alt="Полные оригинальные отзывы о работе Юлии Богдановой" width="864" height="1536"></dialog>
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" tabindex="-1" hidden>
@@ -450,7 +465,8 @@
   <script>
     (() => {
       'use strict';
-      // Контактный e-mail Юлии. Письмо создается через mailto; пользователь завершает отправку в почтовой программе.
+      // Отправка с GitHub Pages без открытия почтовой программы.
+      // Получатель один раз подтверждает адрес в письме от FormSubmit.
       const SETTINGS = { email: 'bogdan-julya@mail.ru' };
 
       const header = document.getElementById('siteHeader');
@@ -504,26 +520,68 @@
 
       const form = document.getElementById('inquiryForm');
       const formMessage = document.getElementById('formMessage');
-      const textArea = document.getElementById('messageText');
-      const copyStatus = document.getElementById('copyStatus');
-      form.addEventListener('submit', e => {
+      const submitButton = document.getElementById('inquirySubmit');
+      let sending = false;
+      function showFormMessage(text, kind) {
+        formMessage.textContent = text;
+        formMessage.classList.toggle('is-success', kind === 'success');
+        formMessage.classList.toggle('is-error', kind === 'error');
+        formMessage.hidden = false;
+        formMessage.scrollIntoView({behavior:'smooth',block:'nearest'});
+      }
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
+        if (sending) return;
+        formMessage.hidden = true;
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        const email = document.getElementById('inquiryEmail').value.trim();
         const name = document.getElementById('inquiryName').value.trim();
         const contact = document.getElementById('inquiryContact').value.trim();
-        if(!name || !contact){ if(!name) document.getElementById('inquiryName').focus(); else document.getElementById('inquiryContact').focus(); return; }
         const type = document.getElementById('inquiryType').value;
         const date = document.getElementById('inquiryDate').value;
         const details = document.getElementById('inquiryDetails').value.trim();
+        if (!email || !name) { showFormMessage('Укажите ваш email и имя.', 'error'); return; }
+        if (document.getElementById('inquiryHoney').value.trim()) return;
         const formattedDate = date ? date.split('-').reverse().join('.') : 'Уточняется';
-        const text = `Здравствуйте, Юлия! Хочу обсудить проведение мероприятия.\n\nИмя: ${name}\nКонтакт: ${contact}\nТип мероприятия: ${type}\nДата: ${formattedDate}\nДетали: ${details || 'Обсудим при общении.'}`.replaceAll('\\n','\n');
-        textArea.value = text; formMessage.hidden = false; copyStatus.textContent = '';
-        const href = `mailto:${encodeURIComponent(SETTINGS.email)}?subject=${encodeURIComponent('Заявка на мероприятие — Юлия Богданова')}&body=${encodeURIComponent(text)}`;
-        document.getElementById('emailInquiry').href = href;
-        formMessage.scrollIntoView({behavior:'smooth',block:'nearest'});
-      });
-      document.getElementById('copyInquiry').addEventListener('click', async () => {
-        try { if(navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(textArea.value); else {textArea.select();if(!document.execCommand('copy')) throw new Error('copy');} copyStatus.textContent='Текст скопирован. Его можно отправить Юлии в удобном мессенджере.'; }
-        catch(e) { textArea.focus();textArea.select();copyStatus.textContent='Выделите текст и скопируйте его вручную.'; }
+        const payload = {
+          _subject: 'Новая заявка на мероприятие — Юлия Богданова',
+          _template: 'table',
+          _captcha: 'false',
+          _honey: '',
+          name,
+          email,
+          contact: contact || 'Не указан',
+          event_type: type,
+          event_date: formattedDate,
+          message: details || 'Обсудим при общении.'
+        };
+        sending = true;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Отправляем заявку…';
+        try {
+          const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(SETTINGS.email)}`, {
+            method: 'POST',
+            headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+            body: JSON.stringify(payload)
+          });
+          let data;
+          try { data = await response.json(); }
+          catch (_) { throw new Error('Сервис вернул неожиданный ответ. Попробуйте ещё раз.'); }
+          // FormSubmit может возвращать "true"/"false" строкой, а не логическим типом.
+          const success = data && (data.success === true || data.success === 'true');
+          if (!response.ok || !success) {
+            const info = data && typeof data.message === 'string' ? data.message : '';
+            throw new Error(info || 'Заявка не была принята. Попробуйте ещё раз позже.');
+          }
+          showFormMessage('Заявка принята сервисом отправки! Спасибо. Юлия получит письмо после подтверждения адреса получателя в FormSubmit (если он ещё не активирован).', 'success');
+          form.reset();
+        } catch (err) {
+          showFormMessage('Не получилось отправить заявку. ' + (err && err.message ? err.message : 'Проверьте подключение к интернету и попробуйте ещё раз.') + ' Если ошибка повторяется, напишите Юлии через контакты на сайте.', 'error');
+        } finally {
+          sending = false;
+          submitButton.disabled = false;
+          submitButton.innerHTML = 'Отправить заявку <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-7-7 7 7-7 7"/></svg>';
+        }
       });
     })();
   </script>
